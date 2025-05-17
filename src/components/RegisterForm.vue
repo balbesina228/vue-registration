@@ -12,16 +12,26 @@
       Пароль
       <input v-model="password" type="password" required />
     </label>
+    <label>
+      Подтверждение пароля
+      <input v-model="confirmPassword" type="password" required />
+    </label>
+    <label>
+      Телефон
+      <input v-model="phone" type="tel" required />
+    </label>
     <button type="submit">Зарегистрироваться</button>
   </form>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 const login = ref('');
 const password = ref('');
+const confirmPassword = ref('');
 const email = ref('');
+const phone = ref('');
 
 </script>
 
