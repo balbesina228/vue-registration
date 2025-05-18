@@ -5,54 +5,69 @@
       <input
         v-model="login"
         type="text"
-        required
+        :class="{ 'error-color': errors.login }"
       />
+      <span class="error-color error-font" v-if="errors.login">
+        Логин должен быть не менее 6 символов, используйте латиницу и цифры
+      </span>
     </label>
     <label>
       E-mail
       <input
         v-model="email"
         type="email"
-        required
+        :class="{ 'error-color': errors.email }"
       />
+      <span class="error-color error-font" v-if="errors.email">
+        Неверный формат электронной почты
+      </span>
     </label>
     <label>
       Телефон
       <input
         v-model="phone"
         type="tel"
-        required
         @input="formatPhone"
         placeholder="+7 (___) ___-__-__"
+        :class="{ 'error-color': errors.phone }"
       />
+      <span class="error-color error-font" v-if="errors.phone">
+        Телефон не заполнен
+      </span>
     </label>
     <label>
       Пароль*
-      <div class="password-container">
+      <div class="password-container" :class="{ 'error-color': errors.confirmPassword }">
         <input
           v-model="password"
           :type="visiblePass? 'text' : 'password'"
-          required
+          :class="{ 'error-color': errors.password }"
         />
         <button type="button" class="visible-btn" @click="visiblePass = !visiblePass">
           <EyeOn v-if="visiblePass" />
           <EyeOff v-else />
         </button>
       </div>
+      <span class="error-color error-font" v-if="errors.password">
+        Пароль должен быть не менее 6 символов, используйте латиницу, цифры или специальные символы
+      </span>
     </label>
     <label>
       Повторить пароль*
-      <div class="password-container">
+      <div class="password-container" :class="{ 'error-color': errors.confirmPassword }">
         <input
           v-model="confirmPassword"
           :type="visibleConfirmPass ? 'text' : 'password'"
-          required
+          :class="{ 'error-color': errors.confirmPassword }"
         />
         <button type="button" class="visible-btn" @click="visibleConfirmPass = !visibleConfirmPass">
           <EyeOn v-if="visibleConfirmPass" />
           <EyeOff v-else />
         </button>
       </div>
+      <span class="error-color error-font" v-if="errors.confirmPassword">
+        Пароли не совпадают
+      </span>
     </label>
     <button type="submit" class="reg-btn">Зарегистрироваться</button>
     <div class="politics-line"></div>
@@ -168,9 +183,9 @@ input {
   border: 0px;
   border-bottom: 1px solid;
   outline: none;
-  line-height: 26px;
-  height: 35px;
+  line-height: 34px;
   flex: 1;
+  font-family: inherit;
 }
 
 .password-container {
@@ -190,5 +205,14 @@ input {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #878787;
+}
+
+.error-color {
+  color: #D60303;
+}
+
+.error-font {
+  margin-top: 4px;
+  font-size: 14px;
 }
 </style>
