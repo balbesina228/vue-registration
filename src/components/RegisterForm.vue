@@ -114,8 +114,8 @@ function validate() {
   if (!phone.value || !/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(phone.value))
     errors.value.phone = 'Телефон не заполнен';
 
-  if (password.value.length < 8)
-    errors.value.password = 'Пароль должен быть не менее 8 символов, используйте латиницу, цифры или специальные символы';
+  if (password.value.length < 6)
+    errors.value.password = 'Пароль должен быть не менее 6 символов, используйте латиницу, цифры или специальные символы';
 
   if (!confirmPassword.value || confirmPassword.value !== password.value)
     errors.value.confirmPassword = 'Пароли не совпадают';
