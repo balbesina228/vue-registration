@@ -28,21 +28,33 @@
     </label>
     <label>
       Пароль*
-      <input
-        v-model="password"
-        type="password"
-        required
-      />
+      <div class="password-container">
+        <input
+          v-model="password"
+          :type="visiblePass? 'text' : 'password'"
+          required
+        />
+        <button type="button" class="visible-btn" @click="visiblePass = !visiblePass">
+          <EyeOn v-if="visiblePass" />
+          <EyeOff v-else />
+        </button>
+      </div>
     </label>
     <label>
       Повторить пароль*
-      <input
-        v-model="confirmPassword"
-        type="password"
-        required
-      />
+      <div class="password-container">
+        <input
+          v-model="confirmPassword"
+          :type="visibleConfirmPass ? 'text' : 'password'"
+          required
+        />
+        <button type="button" class="visible-btn" @click="visibleConfirmPass = !visibleConfirmPass">
+          <EyeOn v-if="visibleConfirmPass" />
+          <EyeOff v-else />
+        </button>
+      </div>
     </label>
-    <button type="submit">Зарегистрироваться</button>
+    <button type="submit" class="reg-btn">Зарегистрироваться</button>
     <div class="politics-line"></div>
     <span class="politics">
       Нажимая кнопку "Зарегистрироваться", пользователь соглашается с политикой в отношении обработки персональных данных и публичной офертой
@@ -52,12 +64,17 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import EyeOff from './icons/icon-eye-off.vue';
+import EyeOn from './icons/icon-eye-on.vue'
 
 const login = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const email = ref('');
 let phone = ref('');
+
+const visiblePass = ref(false);
+const visibleConfirmPass = ref(false);
 
 const errors = ref<Record<string, string>>({});
 
@@ -127,7 +144,7 @@ label {
   font-size: 14px;
 }
 
-button {
+.reg-btn {
   width: auto;
   height: 50px;
   padding: 16px 32px;
@@ -136,12 +153,27 @@ button {
   margin: 22px 0px;
 }
 
+.visible-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
 input {
   border: 0px;
   border-bottom: 1px solid;
   outline: none;
   line-height: 26px;
   height: 35px;
+  flex: 1;
+}
+
+.password-container {
+  display: flex;
+  border-bottom: 1px solid;
+
+  input {
+    border: none;
+  }
 }
 
 .politics-line {
