@@ -1,13 +1,18 @@
 <template>
   <main class="profile-view">
     <span class="title">Здравствуйте, {{ login }}</span>
-    <a href="/" class="quit">Выход</a>
+    <a href="/" class="quit" v-on:click="logout">Выход</a>
   </main>
 </template>
 
 <script lang="ts" setup>
 const userCreds = JSON.parse(localStorage.getItem('user'))
 const login = userCreds?.login
+
+function logout() {
+  localStorage.removeItem('user');
+  localStorage.removeItem('isLoggedIn');
+}
 </script>
 
 <style scoped>
