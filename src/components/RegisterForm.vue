@@ -123,10 +123,10 @@ function validate() {
   if (!login.value || !/^[a-zA-Z0-9]{6,}$/.test(login.value))
     errors.value.login = 'Логин должен быть не менее 6 символов, используйте латиницу и цифры';
 
-  if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value))
+  if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value))
     errors.value.email = 'Неверный формат электронной почты';
 
-  if (!phone.value || !/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(phone.value))
+  if (phone.value && !/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(phone.value))
     errors.value.phone = 'Телефон не заполнен';
 
   if (password.value.length < 6)
