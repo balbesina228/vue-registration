@@ -66,6 +66,7 @@
 import { ref } from 'vue';
 import EyeOff from './icons/icon-eye-off.vue';
 import EyeOn from './icons/icon-eye-on.vue'
+import { useUserStore } from '@/stores/userStore';
 
 const login = ref('');
 const password = ref('');
@@ -75,6 +76,8 @@ let phone = ref('');
 
 const visiblePass = ref(false);
 const visibleConfirmPass = ref(false);
+
+const emit = defineEmits(['onSuccess']);
 
 const errors = ref<Record<string, string>>({});
 
@@ -127,6 +130,9 @@ function submit() {
   }
 
   console.log('validation succeeded')
+  const userStore = useUserStore();
+  userStore.login({ login: login.value, email: email.value, phone: phone.value });
+  emit('onSuccess');
 }
 
 </script>

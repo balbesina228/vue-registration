@@ -1,12 +1,18 @@
 <template>
   <main class="register-view">
     <span class="title">Регистрация</span>
-    <RegisterForm />
+    <RegisterForm @onSuccess="handleSuccess"/>
   </main>
 </template>
 
 <script lang="ts" setup>
 import RegisterForm from '../components/RegisterForm.vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+function handleSuccess() {
+  router.push('/profile');
+}
 </script>
 
 <style scoped>

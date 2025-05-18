@@ -1,11 +1,14 @@
 <template>
   <main class="profile-view">
-    <span class="title">Здравствуйте, NICKNAME</span>
+    <span class="title">Здравствуйте, {{ login }}</span>
     <a href="/" class="quit">Выход</a>
   </main>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const userCreds = JSON.parse(localStorage.getItem('user'))
+const login = userCreds.login
+</script>
 
 <style scoped>
 .profile-view {
