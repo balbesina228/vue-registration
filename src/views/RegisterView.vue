@@ -12,7 +12,7 @@ import RegisterForm from '../components/RegisterForm.vue'
 <style scoped>
 .register-view {
   width: 615px;
-  height: 700px;
+  height: 600px;
   align-items: center;
   justify-content: center;
   background-color: #fffffe;
