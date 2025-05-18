@@ -23,6 +23,11 @@ function handleSuccess() {
   justify-content: center;
   background-color: #fffffe;
   padding: 42px;
+
+  @media screen and (max-width: 768px) {
+    width: auto;
+    height: 100%;
+  }
 }
 
 .title {
@@ -30,5 +35,9 @@ function handleSuccess() {
   font-size: 40px;
   display: block;
   margin-bottom: 24px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
 }
 </style>
