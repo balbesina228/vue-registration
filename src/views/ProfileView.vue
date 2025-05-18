@@ -7,7 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-const userCreds = JSON.parse(localStorage.getItem('user'))
+import type { User } from '@/stores/userStore';
+
+const userCredsRaw = localStorage.getItem('user')
+const userCreds: User | null = userCredsRaw ? JSON.parse(userCredsRaw) : null;
 const login = userCreds?.login
 
 function logout() {
