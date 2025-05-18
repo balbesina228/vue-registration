@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="submit">
     <label>
-      Логин
+      Логин*
       <input
         v-model="login"
         type="text"
@@ -9,26 +9,10 @@
       />
     </label>
     <label>
-      Почта
+      E-mail
       <input
         v-model="email"
         type="email"
-        required
-      />
-    </label>
-    <label>
-      Пароль
-      <input
-        v-model="password"
-        type="password"
-        required
-      />
-    </label>
-    <label>
-      Подтверждение пароля
-      <input
-        v-model="confirmPassword"
-        type="password"
         required
       />
     </label>
@@ -42,7 +26,27 @@
         placeholder="+7 (___) ___-__-__"
       />
     </label>
+    <label>
+      Пароль*
+      <input
+        v-model="password"
+        type="password"
+        required
+      />
+    </label>
+    <label>
+      Повторить пароль*
+      <input
+        v-model="confirmPassword"
+        type="password"
+        required
+      />
+    </label>
     <button type="submit">Зарегистрироваться</button>
+    <div class="politics-line"></div>
+    <span class="politics">
+      Нажимая кнопку "Зарегистрироваться", пользователь соглашается с политикой в отношении обработки персональных данных и публичной офертой
+    </span>
   </form>
 </template>
 
@@ -111,5 +115,42 @@ function submit() {
 </script>
 
 <style scoped>
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+button {
+  width: auto;
+  height: 50px;
+  padding: 16px 32px;
+  color: #ffffff;
+  background-color: #2b2a29;
+  margin: 22px 0px;
+}
+
+input {
+  border: 0px;
+  border-bottom: 1px solid;
+  outline: none;
+  line-height: 26px;
+  height: 35px;
+}
+
+.politics-line {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.politics {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #878787;
+}
 </style>
