@@ -28,6 +28,12 @@ function logout() {
   flex-direction: column;
   align-items: baseline;
   gap: 25px;
+
+  @media screen and (max-width: 768px) {
+  width: auto;
+  height: 100%;
+  justify-content: start;
+}
 }
 
 .title {
