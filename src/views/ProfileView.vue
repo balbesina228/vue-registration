@@ -1,6 +1,7 @@
 <template>
   <main class="profile-view">
     <span class="title">Здравствуйте, {{ login }}</span>
+    <div class="line"></div>
     <a href="/" class="quit" v-on:click="logout">Выход</a>
   </main>
 </template>
@@ -26,7 +27,7 @@ function logout() {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  gap: 57px;
+  gap: 25px;
 }
 
 .title {
@@ -40,5 +41,10 @@ function logout() {
   text-decoration: underline;
   text-underline-offset: 3px;
   color: #2b2a29
+}
+
+.line {
+  border-bottom: 1px solid #f2f2f2;
+  width: 100%;
 }
 </style>
