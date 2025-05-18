@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 const userCreds = JSON.parse(localStorage.getItem('user'))
-const login = userCreds.login
+const login = userCreds?.login
 </script>
 
 <style scoped>
